@@ -1,14 +1,13 @@
-Project(HelloWorld CXX)
+Project(CmakeBugReport CXX)
 
-add_executable(hello_world src/main.cpp)
+include(${CMAKE_CURRENT_SOURCE_DIR}/output/conan/conanbuildinfo.cmake)
+conan_basic_setup(TARGETS )
+
+
 set(OUTPUT_FOLDER "${CMAKE_CURRENT_SOURCE_DIR}/output/bin")
-set_target_properties(hello_world
-        PROPERTIES
-        PREFIX ""
-        ARCHIVE_OUTPUT_DIRECTORY    "${OUTPUT_FOLDER}" 
-        COMPILE_PDB_OUTPUT_DIRECTORY "${OUTPUT_FOLDER}" 
-        PDB_OUTPUT_DIRECTORY        "${OUTPUT_FOLDER}" 
-        EXECUTABLE_OUTPUT_DIRECTORY "${OUTPUT_FOLDER}" 
-        RUNTIME_OUTPUT_DIRECTORY    "${OUTPUT_FOLDER}" 
-        LIBRARY_OUTPUT_DIRECTORY    "${OUTPUT_FOLDER}"
-)
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY  ${OUTPUT_FOLDER} )
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY  ${OUTPUT_FOLDER} )
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${OUTPUT_FOLDER} )
+
+add_subdirectory(plugins)

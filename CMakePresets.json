@@ -2,12 +2,18 @@
     "version": 4,
     "configurePresets": [
       {
-        "name": "default",
+        "name": "_default",
+        "hidden": true,
         "generator": "Ninja",
+        "binaryDir": "${sourceDir}/build/default"
+      },
+      {
+        "name": "default",
+        "inherits": "_default",
         "cacheVariables": {
             "CMAKE_BUILD_TYPE": "Release"
-        },
-        "binaryDir": "${sourceDir}/build/default"
+        }
       }  
+
     ]
 }

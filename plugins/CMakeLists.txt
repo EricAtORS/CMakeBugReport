@@ -1,0 +1,13 @@
+project(hello_world CXX)
+add_executable(${PROJECT_NAME} src/main.cpp)
+set(OUTPUT_FOLDER "${CMAKE_SOURCE_DIR}/output/bin")
+set_target_properties(${PROJECT_NAME}
+        PROPERTIES
+        PREFIX ""
+        ARCHIVE_OUTPUT_DIRECTORY    "${OUTPUT_FOLDER}" 
+        COMPILE_PDB_OUTPUT_DIRECTORY "${OUTPUT_FOLDER}" 
+        PDB_OUTPUT_DIRECTORY        "${OUTPUT_FOLDER}" 
+        EXECUTABLE_OUTPUT_DIRECTORY "${OUTPUT_FOLDER}" 
+        RUNTIME_OUTPUT_DIRECTORY    "${OUTPUT_FOLDER}" 
+        LIBRARY_OUTPUT_DIRECTORY    "${OUTPUT_FOLDER}"
+)
