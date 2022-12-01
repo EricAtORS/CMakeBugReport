@@ -1,7 +1,20 @@
 Project(CmakeBugReport CXX)
 
+PROJECT(hello_world CXX)
 include(${CMAKE_CURRENT_SOURCE_DIR}/output/conan/conanbuildinfo.cmake)
-conan_basic_setup(TARGETS )
+conan_basic_setup(TARGETS NO_OUTPUT_DIRS)
+add_executable(${PROJECT_NAME} src/main.cpp)
+set(OUTPUT_FOLDER "${CMAKE_SOURCE_DIR}/output/bin")
+set_target_properties(${PROJECT_NAME}
+        PROPERTIES
+        PREFIX ""
+        ARCHIVE_OUTPUT_DIRECTORY    "${OUTPUT_FOLDER}" 
+        COMPILE_PDB_OUTPUT_DIRECTORY "${OUTPUT_FOLDER}" 
+        PDB_OUTPUT_DIRECTORY        "${OUTPUT_FOLDER}" 
+        EXECUTABLE_OUTPUT_DIRECTORY "${OUTPUT_FOLDER}" 
+        RUNTIME_OUTPUT_DIRECTORY    "${OUTPUT_FOLDER}" 
+        LIBRARY_OUTPUT_DIRECTORY    "${OUTPUT_FOLDER}"
+)
 
 
 set(OUTPUT_FOLDER "${CMAKE_CURRENT_SOURCE_DIR}/output/bin")
@@ -10,4 +23,3 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY  ${OUTPUT_FOLDER} )
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY  ${OUTPUT_FOLDER} )
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${OUTPUT_FOLDER} )
 
-add_subdirectory(plugins)
